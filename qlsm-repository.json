@@ -1,0 +1,55 @@
+{
+  "plugins": [
+    {
+      "filename": "footstepsVQL.py",
+      "label": "footstepsVQL",
+      "description": "Footsteps for high-fps players, without the doubled sounds. Stock QL plays fewer footsteps above ~400 fps and none at 500+; footstepsVQL makes such players sound to everyone else like a 250 fps player, and never changes what a player hears from himself.",
+      "requires_qlsm_version": "1.43.0",
+      "sha256": "3805c4eccb0b44415d43f4c80713333068e95332c4080918ddd7dd493e690598",
+      "package_files": {
+        "footstepsVQL_lib/footstepsVQL_hook.so": "916281fb6a1b6de78cd8ca0fc5830c95a36b491a7aaf8af41f24299ef680e55d"
+      },
+      "cvars": [
+        {
+          "cvar": "qlx_footstepsVQLEnabled",
+          "label": "Enabled",
+          "type": "bool",
+          "default": true,
+          "description": "Off leaves qagame stock. !fsvload / !fsvunload set it too."
+        },
+        {
+          "cvar": "qlx_footstepsVQLVerbose",
+          "label": "Verbose log",
+          "type": "bool",
+          "default": false,
+          "description": "Also log the routine per-map lines. Failures are always logged."
+        },
+        {
+          "cvar": "qlx_footstepsVQLSo",
+          "label": "Library path",
+          "type": "string",
+          "default": "",
+          "description": "Absolute path to footstepsVQL_hook.so. Empty: next to the plugin, else footstepsVQL_lib/ beside it (where this repository installs it)."
+        }
+      ],
+      "commands": [
+        {
+          "name": "fsvstatus",
+          "permission": 1,
+          "usage": "[reset]",
+          "description": "Version, build, patch state and counters; reset zeroes the counters. Alias !footstepsvql."
+        },
+        {
+          "name": "fsvload",
+          "permission": 2,
+          "description": "Apply the patch now and on future maps."
+        },
+        {
+          "name": "fsvunload",
+          "permission": 2,
+          "description": "Restore stock bytes now and stop re-applying."
+        }
+      ]
+    }
+  ]
+}
